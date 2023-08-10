@@ -1,0 +1,157 @@
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px; /* correct offset on first border spacing if desired */
+}
+
+td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.containerOrders{
+   padding-left: 2vw;
+   padding-right: 2vw;
+}
+
+#progressBar {
+    height: 5px;
+    background-color: var(--success-color);
+    width: 100%;
+    transform-origin: right;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    animation: progressBarAnimation 7s linear forwards;
+}
+
+@keyframes progressBarAnimation {
+    0% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+}
+
+form {
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+}
+
+.form-control {
+  width: 40%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease-in-out;
+  margin-bottom: 1rem;
+}
+
+.form-control :focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#id {
+  flex: 1;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-select{
+   min-width: fit-content;
+}
+
+.popup-container {
+  position: relative;
+}
+
+.popup-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.popup-container:hover .popup-content {
+  display: block;
+}
+
+.row_infobtn{
+    display: none;
+}
+
+.infoButton{
+   display: none;
+}
+
+.colSort {
+  min-width: 200px;
+}
+
+.emptyMessage{
+    min-height: 40vh;
+}
+
+
+@media (max-width: 1100px) {
+
+  .containerOrders{
+     padding-left: 0vw;
+     padding-right: 0vw;
+  }
+
+  .table-responsive{
+    padding-left: 0.5vw !important;
+    padding-right: 0.5vw !important;
+    margin-left: 0vw !important;
+    margin-right: 0vw  !important;
+  }
+
+  #sort {
+      margin-right: 2vw !important;
+    }
+
+  .email-text {
+      display: none;
+    }
+
+    .info-icon {
+      display: inline;
+    }
+
+    .row_infobtn{
+        display: revert;
+        white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+    }
+
+    .infoButton{
+        display: revert;
+        white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+  .info_big{
+     display: none;
+  }
+}
+
+#sort {
+    width: auto;
+  }

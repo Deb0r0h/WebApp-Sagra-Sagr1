@@ -1,0 +1,30 @@
+li span {
+    font-weight: bold;
+}
+
+div#global_wrapper{
+    padding:2% 0 2% 0;
+    margin-top:10%
+}
+
+div#order_id{
+    color:white;
+    font-weight:bold;
+    font-size:200%;
+    white-space: nowrap;
+}
+
+span#total{
+    white-space: nowrap;
+}
+
+input#download_pdf{
+    font-weight: bold;
+    border-width: 5px;
+    width: -webkit-fill-available;
+}
+
+p.general{
+    font-weight: bold;
+    margin: 20px 0 20px 0;
+}

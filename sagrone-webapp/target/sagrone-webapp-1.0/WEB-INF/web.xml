@@ -1,0 +1,209 @@
+<?Nxml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright 2018-2023 University of Padua, Italy
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ Author: Simone Merlo (simone.merlo@studenti.unipd.it)
+ Version: 1.0
+ Since: 1.0
+-->
+
+<web-app id="sagrone-webapp" version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+
+    <display-name>Sagrone</display-name>
+    <description>Application that allows to manage the menu and the orders of a sagra.</description>
+
+    <welcome-file-list>
+        <welcome-file>/html/index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>SagraServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.SagraServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SagraServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InsertModifyOrderServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.InsertModifyOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertModifyOrderServlet</servlet-name>
+        <url-pattern>/neworder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CashierServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.CashierServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CashierServlet</servlet-name>
+        <url-pattern>/users/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/menu/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoadProductPhotoServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.LoadProductPhotoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoadProductPhotoServlet</servlet-name>
+        <url-pattern>/load-product-photo/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orders/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/payedorders/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginUserServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.LoginUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginUserServlet</servlet-name>
+        <url-pattern>/login/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.ProductServlet</servlet-class>
+        <multipart-config>
+            <max-file-size>5242880</max-file-size> <!-- 5 Mbyte -->
+            <max-request-size>5243880</max-request-size> <!-- 5 Mbyte + 1 Kbyte -->
+            <file-size-threshold>524288</file-size-threshold> <!-- 500 Kbyte -->
+        </multipart-config>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/seeprod/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InsertProduct</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.InsertProductServlet</servlet-class>
+
+        <multipart-config>
+            <max-file-size>5242880</max-file-size> <!-- 5 Mbyte -->
+            <max-request-size>5243880</max-request-size> <!-- 5 Mbyte + 1 Kbyte -->
+            <file-size-threshold>524288</file-size-threshold> <!-- 500 Kbyte -->
+        </multipart-config>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertProduct</servlet-name>
+        <url-pattern>/insert</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RestManagerServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.RestDispatcherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RestManagerServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadCashierPDFServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.DownloadCashierPDFServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DownloadCashierPDFServlet</servlet-name>
+        <url-pattern>/DownloadCashierPDF</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadSummaryPDFServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.DownloadSummaryPDFServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadSummaryPDFServlet</servlet-name>
+        <url-pattern>/DownloadSummaryPDF</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>it.unipd.dei.sagrone.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <!-- Protecting resources -->
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>it.unipd.dei.sagrone.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/users/*</url-pattern>
+        <url-pattern>/seeprod/*</url-pattern>
+        <url-pattern>/jsp/admin/*</url-pattern>
+        <url-pattern>/insert</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CashierFilter</filter-name>
+        <filter-class>it.unipd.dei.sagrone.filter.CashierFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CashierFilter</filter-name>
+        <url-pattern>/menu/mod/*</url-pattern>
+        <url-pattern>/DownloadCashierPDF</url-pattern>
+        <url-pattern>/orders</url-pattern>
+        <url-pattern>/orders/*</url-pattern>
+        <url-pattern>/payedorders</url-pattern>
+        <url-pattern>/payedorders/*</url-pattern>
+    </filter-mapping>
+
+
+
+
+    <resource-ref>
+        <description>Connection pool to the database</description>
+        <res-ref-name>jdbc/sagrone</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</web-app>

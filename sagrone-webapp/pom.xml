@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>it.unipd.dei.sagrone</groupId>
+    <artifactId>sagrone-webapp</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+
+    <!-- project description -->
+    <name>sagrone</name>
+
+    <description>Application that allows to manage the menu and the orders of a sagra</description>
+
+    <inceptionYear>2023</inceptionYear>
+
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Department of Information Engineering (DEI), University of Padua, Italy</name>
+        <url>http://www.dei.unipd.it/en/</url>
+    </organization>
+
+
+
+    <!-- Build settings-->
+
+    <properties>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <log4j.version>2.20.0</log4j.version>
+    </properties>
+
+
+    <build>
+        <defaultGoal>compile</defaultGoal>
+
+        <!-- source code folder -->
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+
+        <!-- compiled code folder -->
+        <directory>${basedir}/target</directory>
+
+        <!-- name of the generated package -->
+        <finalName>${project.artifactId}-${project.version}</finalName>
+
+        <!-- configuration of the plugins for the different goals -->
+        <plugins>
+
+            <!-- compiler plugin: source and target code is for Java 1.8 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- javadoc plugin: output in the javadoc folder -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <reportOutputDirectory>${basedir}/javadoc</reportOutputDirectory>
+                    <author>true</author>
+                    <nosince>false</nosince>
+                    <show>protected</show>
+                    <source>${java.version}</source>
+                    <doctitle>${project.name} ${project.version}</doctitle>
+                    <windowtitle>${project.artifactId} ${project.version}</windowtitle>
+                    <bottom>Copyright &#169; ${project.inceptionYear}&#x2013;{currentYear}
+                        <![CDATA[<a href="https://www.unipd.it/en/" target="_blank">University of Padua</a>, Italy. All rights reserved.]]>
+                        <![CDATA[<i>Web Applications</i> is a course of the <a href="https://degrees.dei.unipd.it/master-degrees/computer-engineering/" target="_blank">Master Degree in Computer Engineering</a> of the <a href="https://www.dei.unipd.it/en/" target="_blank">Department of Information Engineering</a>.]]>
+                        <![CDATA[<i>Web Applications</i> is part of the teaching activities of the <a href="http://iiia.dei.unipd.it/" target="_blank">Intelligent Interactive Information Access (IIIA) Hub</a>.]]>
+                    </bottom>
+                    <detectJavaApiLink>true</detectJavaApiLink>
+                    <detectLinks>true</detectLinks>
+                    <validateLinks>true</validateLinks>
+                </configuration>
+            </plugin>
+
+            <!-- packager plugin: create a WAR file to be deployed -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+    <!-- dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>10.1.7</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>2.0.0</version>
+        </dependency
+        >
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220924</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>commons</artifactId>
+            <version>7.2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.14.2</version>
+        </dependency>
+
+    </dependencies>
+</project>
